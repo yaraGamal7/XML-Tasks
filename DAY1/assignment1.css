@@ -1,0 +1,64 @@
+UNIVERSITY_NAME{
+    font-size: 200px;
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+DATE{
+    font-size: 50px;
+    display: block;
+    text-align: center;
+    border: 5px solid red;
+    margin-bottom: 5px;
+}
+
+PRESIDENT{
+    display: block;
+    font-size: 20px;
+}
+
+TITLE{
+    display: block;
+    color: green;
+    font-size: 30px;
+    margin-top: 20px ;
+}
+
+ONEOFFICER , ONEPROVOST{
+    display: block;
+    color: blue;
+}
+
+
+SCHOOLS TITLE{
+    color: red;
+    text-align: center;
+    font-size: 50px;
+}
+ONESCHOOL{
+    display: block;
+}
+
+SCHOOL{
+    margin-top: 20px;
+    display: block;
+}
+
+THE_SCHOOL{
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    color: red;
+}
+
+
+DEPARTMENT{
+    border-top: 5px solid black;
+    border-left: 5px solid black;
+    display: block;
+    margin: 20px;
+}
+DEPTHEAD,DEPTNAME,MAJOR,MAJ_COURSES,MINOR,MIN_COURSES{
+    display: block;
+}

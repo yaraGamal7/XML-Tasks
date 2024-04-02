@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:simpleType name="countrytype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="partNumtype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{3}-[A-Z]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="statetype">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ziptype">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="\d{5}"/>
+			<xs:minExclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="quantitytype">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="\d{1}"/>
+			<xs:minExclusive value="0"/>
+			<xs:maxInclusive value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:element name="purchaseOrder">
+		<xs:complexType>
+			<xs:sequence>
+			
+				<xs:element name="shipTo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="street" type="xs:string"/>
+							<xs:element name="city" type="xs:string"/>
+							<xs:element name="state" type="statetype"/>
+							<xs:element name="zip" type="ziptype"/>
+						</xs:sequence>
+						<xs:attribute name="country" type="countrytype"/>
+					</xs:complexType>
+				</xs:element>
+				
+				<xs:element name="billTo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="street" type="xs:string"/>
+							<xs:element name="city" type="xs:string"/>
+							<xs:element name="state" type="statetype"/>
+							<xs:element name="zip" type="ziptype"/>
+						</xs:sequence>
+						<xs:attribute name="country" type="countrytype"/>
+					</xs:complexType>
+				</xs:element>
+				
+				<xs:element name="comment" type="xs:string"/>
+				
+				<xs:element name="items">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="item" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="productName" type="xs:string"/>
+										<xs:element name="quantity" type="quantitytype"/>
+										<xs:element name="USPrice" type="xs:decimal"/>
+										<xs:choice>
+											<xs:element name="comment" type="xs:string" minOccurs="0"/>
+										</xs:choice>
+										<xs:choice>
+											<xs:element name="shipDate" type="xs:date" minOccurs="0"/>
+										</xs:choice>
+									</xs:sequence>
+									<xs:attribute name="partNum" type="partNumtype"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				
+			</xs:sequence>
+			
+			<xs:attribute name="orderDate" type="xs:date"/>
+			
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
